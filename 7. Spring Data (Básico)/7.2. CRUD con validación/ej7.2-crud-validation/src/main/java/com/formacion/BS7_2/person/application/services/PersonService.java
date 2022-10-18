@@ -2,7 +2,6 @@ package com.formacion.BS7_2.person.application.services;
 
 import com.formacion.BS7_2.person.infraestructure.dto.input.PersonInputDto;
 import com.formacion.BS7_2.person.infraestructure.dto.output.PersonOutputDto;
-import com.formacion.BS7_2.teacher.infraestructure.dto.output.TeacherOutputDto;
 import java.util.List;
 
 

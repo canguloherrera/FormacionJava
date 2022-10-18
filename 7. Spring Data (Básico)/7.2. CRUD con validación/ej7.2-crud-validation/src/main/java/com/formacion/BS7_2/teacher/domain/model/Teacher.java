@@ -6,15 +6,14 @@ import com.formacion.BS7_2.student.domain.Student;
 import com.formacion.BS7_2.studentSubject.domain.StudentSubject;
 import com.formacion.BS7_2.teacher.infraestructure.dto.input.TeacherInputDto;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -26,8 +25,7 @@ public class Teacher  {
     @GenericGenerator(name= "teacher-seq",
             strategy ="com.formacion.BS7_2.generator.Generator_ID" )
     @Column(name = "id_teacher")
-
-    private String id_teacher;
+    String id_teacher;
     private String comments;
     @NotNull
     @Column(name = "branch")

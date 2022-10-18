@@ -5,7 +5,7 @@ import com.formacion.BS7_2.person.infraestructure.dto.output.PersonOutputDto;
 import com.formacion.BS7_2.teacher.domain.model.Teacher;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 
 /**
@@ -13,17 +13,17 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-public class TeacherOutputDto implements Serializable {
-    private  String id_teacher;
-    private Integer id_person;
-    private  String comments;
-    private  String branch;
+public class TeacherOutputDto  {
+    private String idTeacher;
+    private Integer idPerson;
+    private String comments;
+    private String branch;
 
-    public TeacherOutputDto(Teacher teacher){
-       setId_teacher(teacher.getId_teacher());
-       setId_person(teacher.getPerson().getId_person());
-       setComments(teacher.getComments());
-       setBranch(teacher.getBranch());
+    public TeacherOutputDto(@NotNull Teacher teacher){
+        setIdTeacher(teacher.getId_teacher());
+        setIdPerson(teacher.getPerson().getId_person());
+        setComments(teacher.getComments());
+        setBranch(teacher.getBranch());
     }
 
 }

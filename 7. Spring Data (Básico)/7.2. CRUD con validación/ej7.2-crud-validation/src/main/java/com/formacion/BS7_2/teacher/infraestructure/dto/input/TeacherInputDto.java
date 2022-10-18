@@ -18,7 +18,7 @@ public class TeacherInputDto implements Serializable {
 
     public Teacher transformTeacherInputIntoEntity(Person person){
        Teacher teacher = new Teacher();
-      // teacher.setPerson(person);
+       teacher.setPerson(person);
        teacher.setComments(this.getComments());
        teacher.setBranch(this.getBranch());
        return teacher;

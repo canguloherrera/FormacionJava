@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShowTeacherById {
     @Autowired
     ITeacherService teacherService;
-    @GetMapping("teacher/{id}")
+    @GetMapping("/{id}")
     public TeacherOutputDto showById(@PathVariable String id) throws  Exception{
         return teacherService.findById(id);
     }

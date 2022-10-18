@@ -6,8 +6,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 
-@EnableFeignClients("com.formacion.BS7_2.feignServer") // Inform to Spring that we are going to use Feign
+
 @SpringBootApplication
+@EnableFeignClients("com.formacion.BS7_2.feignServer")// Inform to Spring that we are going to use Feign
 public class Bs72CRUDApplication {
 
 	public static void main(String[] args) {

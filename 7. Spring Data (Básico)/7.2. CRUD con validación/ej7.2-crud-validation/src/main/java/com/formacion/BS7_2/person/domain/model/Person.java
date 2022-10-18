@@ -44,11 +44,6 @@ public class Person implements Serializable {
     private String image_url;
     private Date termination_date;
 
-    //@OneToOne(mappedBy = "person")
-   // private Student student;
-
-   // @OneToOne(mappedBy = "person")
-   // private Teacher teacher;
 
 
 

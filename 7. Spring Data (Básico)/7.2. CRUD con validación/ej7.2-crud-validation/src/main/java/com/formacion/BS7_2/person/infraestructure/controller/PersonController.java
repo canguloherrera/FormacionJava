@@ -1,10 +1,8 @@
 package com.formacion.BS7_2.person.infraestructure.controller;
 
-import com.formacion.BS7_2.feignServer.TeacherFeignClient;
 import com.formacion.BS7_2.person.application.services.PersonService;
 import com.formacion.BS7_2.person.infraestructure.dto.input.PersonInputDto;
 import com.formacion.BS7_2.person.infraestructure.dto.output.PersonOutputDto;
-import com.formacion.BS7_2.teacher.infraestructure.dto.output.TeacherOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +13,9 @@ import java.util.List;
 public class PersonController {
     @Autowired
     PersonService personService;
-    @Autowired
-    TeacherFeignClient teacherFeignClient;
+
+
+
 
     @PostMapping("/addPerson")
     public PersonOutputDto addPerson(@RequestBody PersonInputDto personInputDto) throws Exception {
@@ -46,10 +45,9 @@ public class PersonController {
         return personService.findByName(username);
     }
 
-    @GetMapping("/teacher/{id}")
-    public TeacherOutputDto getTeacher(@PathVariable("id") String idTeacher) {
-        return teacherFeignClient.getTeacherWithFeign(idTeacher);
-    }
+
+
+
 }
 
 

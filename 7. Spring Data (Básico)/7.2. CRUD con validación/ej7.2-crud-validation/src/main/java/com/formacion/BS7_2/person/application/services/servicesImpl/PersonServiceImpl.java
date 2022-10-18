@@ -2,7 +2,6 @@ package com.formacion.BS7_2.person.application.services.servicesImpl;
 
 import com.formacion.BS7_2.exception.EntityNotFoundException;
 import com.formacion.BS7_2.exception.UnprocessableEntityException;
-import com.formacion.BS7_2.feignServer.TeacherFeignClient;
 import com.formacion.BS7_2.person.infraestructure.repository.PersonDaoRepository;
 import com.formacion.BS7_2.person.application.services.PersonService;
 import com.formacion.BS7_2.person.domain.model.Person;
@@ -11,9 +10,9 @@ import com.formacion.BS7_2.person.infraestructure.dto.output.PersonOutputDto;
 import com.formacion.BS7_2.student.domain.Student;
 import com.formacion.BS7_2.student.infraestructure.repository.StudentDaoRepository;
 import com.formacion.BS7_2.teacher.domain.model.Teacher;
-import com.formacion.BS7_2.teacher.infraestructure.dto.output.TeacherOutputDto;
+
 import com.formacion.BS7_2.teacher.infraestructure.repository.TeacherDaoRepository;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +36,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     TeacherDaoRepository teacherDaoRepository;
+
 
     //Servicio para agregar persona
     @Override
@@ -152,9 +152,4 @@ public class PersonServiceImpl implements PersonService {
             throw new UnprocessableEntityException("Enter a value please",422,new Date());
         }
     }
-
-    //@Override
-   // public Optional<Person> getPersonOptional(int id) {
-     //   return personDaoRepository.findById(id);
-    }
-//}
+}
