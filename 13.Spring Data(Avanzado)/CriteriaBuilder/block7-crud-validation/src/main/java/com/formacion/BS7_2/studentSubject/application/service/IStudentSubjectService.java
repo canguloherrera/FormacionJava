@@ -10,7 +10,7 @@ public interface IStudentSubjectService {
     //para agregar  curso
     public SubjectOutputDto addSubject(SubjectInputDto subjectInputDto) throws Exception;
 
-    public SubjectOutputDto findById(String id)throws Exception;
+    public SubjectOutputDto findSubjectById(String id);
 
     //para actualizar curso
     public SubjectOutputDto updateSubject(String id, SubjectInputDto subjectInputDto) throws Exception;
@@ -18,6 +18,8 @@ public interface IStudentSubjectService {
     public String deleteSubject(String id) throws Exception;
     //para mostrar todos los cursos
     public List<SubjectOutputDto>  getSubjectStudentById(String idStudent) ;
+
+    public List<SubjectOutputDto> findALl();
 
 
 

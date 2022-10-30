@@ -11,6 +11,7 @@ import com.formacion.BS7_2.studentSubject.domain.StudentSubject;
 import com.formacion.BS7_2.exception.EntityNotFoundException;
 
 import com.formacion.BS7_2.teacher.domain.model.Teacher;
+import com.formacion.BS7_2.teacher.infraestructure.dto.output.TeacherOutputDto;
 import com.formacion.BS7_2.teacher.infraestructure.repository.TeacherDaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ import java.util.stream.Collectors;
     }
 
     @Override
-    public SubjectOutputDto findById(String id) throws Exception {
+    public SubjectOutputDto findSubjectById(String id)  {
         return new SubjectOutputDto(studentSubjectDaoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Not Found",404,new Date())));
     }
 
@@ -80,6 +81,15 @@ import java.util.stream.Collectors;
         return student.getStudentSubjects().stream().map(SubjectOutputDto::new).collect(Collectors.toList());
     }
 
+    @Override
+    public List<SubjectOutputDto> findALl() {
+        List<SubjectOutputDto> subjectList = new ArrayList<>();
+        studentSubjectDaoRepository.findAll().forEach(subject -> {
+            SubjectOutputDto subjectOutputDto = new SubjectOutputDto(subject);
+            subjectList.add(subjectOutputDto);
+        });
+        return subjectList;
+    }
 
 
     private List<Student> getStudentsIds(List<String> ids){

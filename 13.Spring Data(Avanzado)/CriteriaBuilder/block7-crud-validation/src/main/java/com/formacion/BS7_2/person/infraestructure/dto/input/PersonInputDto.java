@@ -26,6 +26,23 @@ public class PersonInputDto {
     private Date created_date;
     private String image_url;
     private Date termination_date;
-}
+
+    public Person transformDtoToEntity(){
+        Person person = new Person();
+        person.setUsername(this.username);
+        person.setPasswd(this.passwd);
+        person.setName(this.name);
+        person.setSurname(this.surname);
+        person.setEmailcomp(this.emailcomp);
+        person.setEmailpers(this.emailpers);
+        person.setCity(this.city);
+        person.setActive(this.active);
+        person.setCreated_date(this.created_date);
+        person.setImage_url(this.getImage_url());
+        person.setTermination_date(this.termination_date);
+        return person;
+    }
+    }
+
 
 

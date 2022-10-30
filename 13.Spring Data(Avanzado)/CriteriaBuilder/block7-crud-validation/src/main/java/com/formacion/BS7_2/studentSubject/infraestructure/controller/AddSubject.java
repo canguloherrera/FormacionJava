@@ -4,12 +4,10 @@ import com.formacion.BS7_2.studentSubject.application.service.IStudentSubjectSer
 import com.formacion.BS7_2.studentSubject.infraestructure.dto.input.SubjectInputDto;
 import com.formacion.BS7_2.studentSubject.infraestructure.dto.output.SubjectOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/subject")
 public class AddSubject {
     @Autowired

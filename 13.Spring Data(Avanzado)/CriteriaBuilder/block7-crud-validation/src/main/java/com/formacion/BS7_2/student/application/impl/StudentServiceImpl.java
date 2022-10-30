@@ -46,9 +46,9 @@ public class StudentServiceImpl implements IStudentService {
     public StudentOutputDto addStudent(StudentInputDto studentInputDto) throws Exception {
         Person person = personDaoRepository.findById(studentInputDto.getId_person()).orElseThrow(() -> new EntityNotFoundException("Person does not exist", 404, new Date()));
         Teacher teacher = null;
-        if (studentInputDto.getId_teacher() != null) {
-            teacher = teacherDaoRepository.findById(studentInputDto.getId_teacher()).
-                    orElseThrow(() -> new EntityNotFoundException("Teacher not found", 404, new Date()));
+      if (studentInputDto.getId_teacher() != null) {
+           teacher = teacherDaoRepository.findById(studentInputDto.getId_teacher()).
+                   orElseThrow(() -> new EntityNotFoundException("Teacher not found", 404, new Date()));
         }
 
         //validacion de si ya esta como profesor o teacher

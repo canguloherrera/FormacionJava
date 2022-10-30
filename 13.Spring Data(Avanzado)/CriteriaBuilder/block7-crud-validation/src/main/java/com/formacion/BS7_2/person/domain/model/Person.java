@@ -50,19 +50,7 @@ public class Person implements Serializable {
 
 
 
-   public Person(PersonInputDto personInputDto){
-       this.username = personInputDto.getUsername();
-       this.passwd = personInputDto.getPasswd();
-       this.name =personInputDto.getName();
-       this.surname = personInputDto.getSurname();
-       this.emailcomp= personInputDto.getEmailcomp();
-       this.emailpers= personInputDto.getEmailpers();
-       this.city = personInputDto.getCity();
-       this.active = personInputDto.getActive();
-       this.created_date = personInputDto.getCreated_date();
-       this.image_url = personInputDto.getImage_url();
-       this.termination_date= personInputDto.getTermination_date();
-   }
+
 
 
 

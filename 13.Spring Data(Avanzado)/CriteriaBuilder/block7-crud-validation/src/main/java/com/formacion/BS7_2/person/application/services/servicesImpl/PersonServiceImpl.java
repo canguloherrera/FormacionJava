@@ -53,8 +53,8 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public PersonOutputDto addUser(PersonInputDto personInputDto) throws Exception {
 
-        testFields(personInputDto);//revision de campos
-        Person person = new Person(personInputDto); //se pasa el objeto recibido por el DTO a la entity se guarda en un objeto
+       testFields(personInputDto);//revision de campos
+        Person person = personInputDto.transformDtoToEntity(); //se pasa el objeto recibido por el DTO a la entity se guarda en un objeto
         personDaoRepository.save(person);
         return new PersonOutputDto(person); //retorna con un dto que muestra el objeto creado
     }
@@ -160,9 +160,9 @@ public class PersonServiceImpl implements PersonService {
         if(personInputDto.getUsername().length()<6){
             throw new UnprocessableEntityException("username cannot be less than 6 characters",422,new Date());
         }
-        if(personInputDto.getPasswd()==null){
-            throw new UnprocessableEntityException("password cannot be empty",422,new Date());
-        }
+       if(personInputDto.getPasswd()==null){
+           throw new UnprocessableEntityException("password cannot be empty",422,new Date());
+       }
         if(personInputDto.getName()==null){
             throw new UnprocessableEntityException("Name cannot be null",422,new Date());
         }
