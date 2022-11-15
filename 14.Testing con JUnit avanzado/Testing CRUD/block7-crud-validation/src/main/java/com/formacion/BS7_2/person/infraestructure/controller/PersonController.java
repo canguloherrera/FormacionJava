@@ -15,8 +15,6 @@ public class PersonController {
     PersonService personService;
 
 
-
-
     @PostMapping("/addPerson")
     public PersonOutputDto addPerson(@RequestBody PersonInputDto personInputDto) throws Exception {
         return personService.addUser(personInputDto);
