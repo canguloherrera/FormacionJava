@@ -7,9 +7,17 @@ import com.formacion.BS7_2.person.domain.model.Person;
 import com.formacion.BS7_2.person.infraestructure.dto.input.PersonInputDto;
 import com.formacion.BS7_2.person.infraestructure.dto.output.PersonOutputDto;
 import com.formacion.BS7_2.person.infraestructure.dto.repository.PersonDaoRepository;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -27,6 +35,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -111,8 +120,6 @@ class PersonControllerTest {
     }
 
 
-
-
     @Test
     void personListTest() throws Exception {
         //give
@@ -136,17 +143,8 @@ class PersonControllerTest {
 
     }
 
-    @Test
-    void personListNotFound() throws Exception {
-        List<PersonOutputDto> personList = new ArrayList<>();
-        when(personService.findALl()).thenThrow(EntityNotFoundException.class);
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/person/personList");
-        mockMvc.perform(requestBuilder)
-                .andExpect(status().isNotFound()).andExpect(content().contentType("application/json"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
 
 
-    }
 
 
     @Test
@@ -166,13 +164,6 @@ class PersonControllerTest {
     }
 
     @Test
-    void showByIdPersonNotFound() throws Exception {
-
-
-    }
-
-
-    @Test
     void testDeletePerson() throws Exception {
         when(personService.deleteUser((Integer) org.mockito.Mockito.any())).thenReturn("Delete User");
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/person/delete/{id}", 1);
@@ -184,21 +175,53 @@ class PersonControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string("User deleted"));
     }
 
+
     @Test
-    void ShouldDeletePersonWithException() throws Exception{
-        when(personService.deleteUser((Integer) any())).thenThrow(EntityNotFoundException.class);
+    void testDeletePerson2() throws Exception {
+        when(personService.deleteUser((Integer) org.mockito.Mockito.any())).thenReturn("Delete User");
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/person/delete/{id}", 1);
         MockMvcBuilders.standaloneSetup(personController)
                 .build()
                 .perform(requestBuilder)
-                .andExpect(MockMvcResultMatchers.status().isNotFound());
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
+                .andExpect(MockMvcResultMatchers.content().string("User deleted"));
     }
 
-    @Test
-    void updatePerson() {
-    }
 
     @Test
-    void showByName() {
+    void testShowByName() throws Exception {
+        when(personService.findByName((String) org.mockito.Mockito.any())).thenReturn(new ArrayList<>());
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/person/person/username/{username}",
+                "cah119");
+        MockMvcBuilders.standaloneSetup(personController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
+
+
+    @Test
+    void testUpdatePerson() throws Exception {
+        Integer id = 1;
+        personInputDto.setId(id);
+        when(personService.updateUser((Integer) any(), (PersonInputDto) org.mockito.Mockito.any()))
+                .thenReturn(new PersonOutputDto(new Person()));
+
+        String content = (new ObjectMapper()).writeValueAsString(personInputDto);
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.put("/person/update/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content);
+        MockMvcBuilders.standaloneSetup(personController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andDo(print());
+    }
+
+
+
 }

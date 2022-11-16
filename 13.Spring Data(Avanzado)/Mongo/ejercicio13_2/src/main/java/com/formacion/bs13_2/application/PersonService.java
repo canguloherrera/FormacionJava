@@ -48,7 +48,12 @@ public class PersonService implements IPersonService{
     public PersonOutputDto createPerson(PersonInputDto personInputDto) {
         testFields(personInputDto);
         Person person = convertPersonInputDtoToEntity(personInputDto);
+
+
         person.setId(service.getSequenceNumber(SEQUENCE_NAME));
+        //asigno id, ya que no se genera automaticamente el id al objeto de la coleccion
+        //en mongoTemplate no hace uso de repositorio en vista de que viene incluido
+        //en la clase MongoTemplate
         mongoTemplate.save(person);
         return convertPersonToPersonOutputDto(person);
     }
@@ -79,7 +84,7 @@ public class PersonService implements IPersonService{
 
     @Override
     public List<PersonOutputDto> getAllPerson() {
-        return mongoTemplate.findAll(Person.class).stream().map(p->convertPersonToPersonOutputDto(p)).toList();
+        return mongoTemplate.findAll(Person.class).stream().map(this::convertPersonToPersonOutputDto).toList();
 
        }
 
