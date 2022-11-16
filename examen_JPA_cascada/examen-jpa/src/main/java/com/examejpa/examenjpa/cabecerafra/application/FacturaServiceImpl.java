@@ -30,7 +30,7 @@ public class FacturaServiceImpl implements FacturaService {
 
     //adiciona una linea a una factura existente
     @Override
-    public CabeceraFra addLineFra(LineaInputDto lineaInputDto) {
+    public FacturaOutPutDto addLineFra(LineaInputDto lineaInputDto) {
 
         Optional<CabeceraFra> factura = cabeceraFraRepository.findById(lineaInputDto.getIdFra());
         if(factura.isEmpty()){
@@ -42,7 +42,7 @@ public class FacturaServiceImpl implements FacturaService {
                  lineaInputDto.getImporte());
         listaLineas.add(linea);
         factura.get().setItems(listaLineas);
-        return cabeceraFraRepository.save(factura.get());
+        return new FacturaOutPutDto(cabeceraFraRepository.save(factura.get()));
     }
 
     @Override

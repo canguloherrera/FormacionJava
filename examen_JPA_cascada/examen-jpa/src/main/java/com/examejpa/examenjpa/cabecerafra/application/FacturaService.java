@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface FacturaService {
 
 
-    CabeceraFra addLineFra(LineaInputDto lineaInputDto);
+    FacturaOutPutDto addLineFra(LineaInputDto lineaInputDto);
 
     String deleteFactura(int id);
 

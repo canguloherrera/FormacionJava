@@ -40,7 +40,7 @@ public class FacturaController {
     }
 
     @PutMapping("/linea/{idFra}")
-    public CabeceraFra addLineaFra(@RequestBody LineaInputDto lineaInputDTO,
+    public FacturaOutPutDto addLineaFra(@RequestBody LineaInputDto lineaInputDTO,
                                    @PathVariable int idFra){
         lineaInputDTO.setIdFra(idFra);
         return facturaService.addLineFra(lineaInputDTO);
