@@ -27,8 +27,7 @@ import java.util.Optional;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    @Autowired
-    RoleServiceImpl roleService;
+
 
     @Autowired
     RoleRepository roleRepo;
@@ -42,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
         testFields(personInputDto);//revision de campos
         Role role = new Role();
         Person person = new Person(personInputDto); //se pasa el objeto recibido por el DTO a la entity se guarda en un objeto
-if(!person.getAdmin()){
+     if(!person.getAdmin()){
             role.setName("USER");
             roleRepo.save(role);
             person.getRoles().add(role);
