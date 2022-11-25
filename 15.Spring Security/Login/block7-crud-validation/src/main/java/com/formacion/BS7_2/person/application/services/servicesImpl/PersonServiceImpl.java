@@ -14,20 +14,22 @@ import com.formacion.BS7_2.role.application.RoleServiceImpl;
 import com.formacion.BS7_2.role.domain.Role;
 import com.formacion.BS7_2.role.infraestructure.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
-public class PersonServiceImpl implements PersonService {
-
-
+public class PersonServiceImpl implements PersonService, UserDetailsService {
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     RoleRepository roleRepo;
@@ -40,7 +42,8 @@ public class PersonServiceImpl implements PersonService {
 
         testFields(personInputDto);//revision de campos
         Role role = new Role();
-        Person person = new Person(personInputDto); //se pasa el objeto recibido por el DTO a la entity se guarda en un objeto
+        Person person = new Person(personInputDto);//se pasa el objeto recibido por el DTO a la entity se guarda en un objeto
+        person.setPassword(passwordEncoder.encode(person.getPassword()));
      if(!person.getAdmin()){
             role.setName("USER");
             roleRepo.save(role);
@@ -158,5 +161,20 @@ public class PersonServiceImpl implements PersonService {
         if (personInputDto.getActive() == null) {
             throw new UnprocessableEntityException("Enter a value please",422,new Date());
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Person person = personDaoRepository.findByUsername(username);
+        if(person==null){
+            throw  new UsernameNotFoundException("Person does not exist");
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        person.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        });
+
+
+        return new org.springframework.security.core.userdetails.User(person.getUsername(),person.getPassword(),authorities);
     }
 }

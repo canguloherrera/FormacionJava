@@ -13,8 +13,12 @@ import com.formacion.BS7_2.role.infraestructure.dto.RoleOutputDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
 @RequestMapping("/roles")
@@ -63,7 +67,14 @@ public class RoleController {
     public String deleteRoleToPerson(@PathVariable("username") String username,@PathVariable Long id) throws Exception{
         roleService.deleteRolePerson(username,id);
         return "role deleted";
+
     }
+    @GetMapping("/role/addtoPerson")
+    public void refreshtoken(HttpServletRequest request, HttpServletResponse response){
+        String authorizationHeader = request.getHeader(AUTHORIZATION);
+    }
+
+
 
 
 

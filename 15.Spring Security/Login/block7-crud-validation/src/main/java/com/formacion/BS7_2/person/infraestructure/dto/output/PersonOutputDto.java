@@ -2,6 +2,7 @@ package com.formacion.BS7_2.person.infraestructure.dto.output;
 
 import com.formacion.BS7_2.person.domain.model.Person;
 import com.formacion.BS7_2.role.domain.Role;
+import com.formacion.BS7_2.role.infraestructure.dto.RoleOutputDto;
 import lombok.Data;
 
 import javax.persistence.CollectionTable;
@@ -16,7 +17,7 @@ import java.util.Date;
 public class PersonOutputDto {
     private Integer id_person;
     private String username;
-    private String password;
+
     private String name;
 
     private String surname;
@@ -34,9 +35,9 @@ public class PersonOutputDto {
 
 
     public PersonOutputDto(Person person) {
+
         this.id_person = person.getId_person();
         this.username = person.getUsername();
-        this.password =person.getPassword();
         this.name = person.getName();
         this.surname = person.getSurname();
         this.company_email = person.getCompany_email();

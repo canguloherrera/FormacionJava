@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleOutputDto {
-    private Long id;
+
     private String name;
 
     public RoleOutputDto (Role role){
-        this.id = role.getId();
+
         this.name = role.getName();
 
     }

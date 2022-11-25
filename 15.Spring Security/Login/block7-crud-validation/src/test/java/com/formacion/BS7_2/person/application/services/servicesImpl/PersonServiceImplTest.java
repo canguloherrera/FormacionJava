@@ -233,29 +233,29 @@ class PersonServiceImplTest {
         verify(personDaoRepository, never()).save(person);
     }
 
-    @Tag("findById")
-    @DisplayName("findById")
-    @Test
-    void findById() throws Exception {
+//    @Tag("findById")
+//    @DisplayName("findById")
+//    @Test
+//    void findById() throws Exception {
+//
+//        //give
+//        person.setId_person(1);
+//        Optional<Person> ofResult = Optional.of(person);
+//        //when
+//        when(personDaoRepository.findById((Integer) any())).thenReturn(ofResult);
+//        PersonOutputDto personOutputDto = personService.findById(1);
+//        verify(personDaoRepository).findById(person.getId_person());
+//        //then
+//
+//        assertTrue(personOutputDto.getActive());
+//        assertEquals("cah119", personOutputDto.getUsername());
+//        assertEquals("as123", personOutputDto.getPassword());
+//        assertEquals("carlos", personOutputDto.getName());
+//        assertEquals("angulo", personOutputDto.getSurname());
+//        assertEquals("ca@bosonit.com", personOutputDto.getCompany_email());
+//        assertEquals("ca@hotmail.com", personOutputDto.getPersonal_email());
 
-        //give
-        person.setId_person(1);
-        Optional<Person> ofResult = Optional.of(person);
-        //when
-        when(personDaoRepository.findById((Integer) any())).thenReturn(ofResult);
-        PersonOutputDto personOutputDto = personService.findById(1);
-        verify(personDaoRepository).findById(person.getId_person());
-        //then
-
-        assertTrue(personOutputDto.getActive());
-        assertEquals("cah119", personOutputDto.getUsername());
-        assertEquals("as123", personOutputDto.getPassword());
-        assertEquals("carlos", personOutputDto.getName());
-        assertEquals("angulo", personOutputDto.getSurname());
-        assertEquals("ca@bosonit.com", personOutputDto.getCompany_email());
-        assertEquals("ca@hotmail.com", personOutputDto.getPersonal_email());
-
-    }
+ //   }
 
 
     @Tag("findByIdNotFound")
