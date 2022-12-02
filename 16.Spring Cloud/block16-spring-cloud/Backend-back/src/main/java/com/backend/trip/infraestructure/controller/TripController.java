@@ -62,5 +62,10 @@ public class TripController {
         return tripService.changeStatus(trip_id,status);
     }
 
+    @GetMapping("/trip/verify/{idTrip}")
+    public ResponseEntity<?> verifyStatus(@PathVariable("idTrip") Integer idTrip){
+        return ResponseEntity.ok().body(tripService.checkStatus(idTrip));
+    }
+
 
 }

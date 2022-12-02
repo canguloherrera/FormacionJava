@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run Backend-front" type="Application" factoryName="Application">
+  <configuration default="false" name="Run Backend-front 8200" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.backend.front.TicketApplication" />
     <module name="backendfront" />
     <method v="2">

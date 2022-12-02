@@ -100,6 +100,8 @@ public class TripServiceImpl implements ITripService{
 
     @Override
     public String checkStatus(Integer idTrip) {
-        return null;
+       return   tripRepo.findById(idTrip).orElseThrow(()->new EntityNotFoundException("Trip does not exist",404,new Date()))
+                .getStatus();
+
     }
 }

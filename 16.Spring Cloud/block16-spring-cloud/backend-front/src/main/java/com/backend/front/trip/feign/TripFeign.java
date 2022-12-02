@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name="trip-service",url = "http://localhost:8100/trip")
+@FeignClient(name="trip-service",url = "http://localhost:8080/trip")
 public interface TripFeign {
     @GetMapping("/{id}")
     TripOutputDto getTripById(@PathVariable Integer id);

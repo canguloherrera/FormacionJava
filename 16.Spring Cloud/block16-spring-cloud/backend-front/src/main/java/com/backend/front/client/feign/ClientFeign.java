@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name="client-service",url = "http://localhost:8100/client")
+@FeignClient(name="client-service",url = "http://localhost:8080/client")
 public interface ClientFeign {
     @GetMapping("/{id}")
     ClientOutputDto showById(@PathVariable("id") Long id);

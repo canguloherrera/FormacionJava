@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/block16-spring-cloud/Backend-back/pom.xml" />
         <option value="$PROJECT_DIR$/block16-spring-cloud/backend-front/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/eureka-naming-server/pom.xml" />
       </list>
     </option>
   </component>
