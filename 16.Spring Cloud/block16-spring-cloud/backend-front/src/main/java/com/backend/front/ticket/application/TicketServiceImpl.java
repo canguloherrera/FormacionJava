@@ -39,7 +39,6 @@ public class TicketServiceImpl implements TicketService {
         Client client = new Client(clientOutputDto);
         TripOutputDto tripOutputDto = tripService.showById(idTrip);
         Trip trip = new Trip(tripOutputDto);
-       // TripOutputDto tripOutputDto = tripService.showById(idTrip);
         Ticket ticket = new Ticket(client,trip);
         ticketRepo.save(ticket);
         return ticket;

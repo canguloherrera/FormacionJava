@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="backendfront" />
-        <module name="eureka-server" />
+        <module name="apigateway" />
         <module name="backend-back" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="apigateway" target="17" />
       <module name="backend-back" target="17" />
       <module name="backendfront" target="17" />
       <module name="eureka-server" target="17" />
@@ -20,6 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="apigateway" options="-parameters" />
       <module name="backend-back" options="-parameters" />
       <module name="backendfront" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
