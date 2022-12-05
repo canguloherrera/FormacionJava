@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringCloudGatewayRouting {
-   @Bean
-  public RouteLocator configureRoute(RouteLocatorBuilder builder) {
-     return builder.routes()
-              .route("client", r->r.path("/client/**").uri("lb://BACKEND"))
-             .route("trip", r->r.path("/trip/**").uri("lb://BACKEND"))
-             .route("ticket", r->r.path("/ticket/**").uri("lb://FRONTEND"))
-              .build();
-   }
+//   @Bean
+//  public RouteLocator configureRoute(RouteLocatorBuilder builder) {
+//     return builder.routes()
+//              .route("client", r->r.path("/client/**").uri("http://localhost:8200/client"))
+//             .route("trip", r->r.path("/trip/**").uri("localhost:8200:/trip"))
+//             .route("ticket", r->r.path("/ticket/**").uri("localhost:8200:/ticket"))
+//              .build();
+//   }
 }
