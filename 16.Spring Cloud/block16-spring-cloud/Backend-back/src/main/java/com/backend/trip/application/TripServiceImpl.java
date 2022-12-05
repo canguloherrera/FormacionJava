@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -82,8 +83,10 @@ public class TripServiceImpl implements ITripService{
        if(trip.getPassengers().size()==40){
            throw new UnprocessableEntityException("no passenger seats available",422,new Date());
        }
-        if(trip.getPassengers().stream().filter(cliente->cliente.getIdClient()==idClient).toList().size()==1);
-        Client client = clientRepo.findById(idClient).orElseThrow(()->new EntityNotFoundException("Client does not exist",404,new Date()));
+        if(trip.getPassengers().stream().filter(cliente-> Objects.equals(cliente.getIdClient(), idClient)).toList().size()==1){
+            throw new UnprocessableEntityException("Customer already exists within the trip",422,new Date());
+        };
+        Client client = clientRepo.findById(idClient).orElseThrow(()->new EntityNotFoundException("Customer does not exist",404,new Date()));
         trip.getPassengers().add(client);
         tripRepo.save(trip);
         return new TripOutputDto(trip);
