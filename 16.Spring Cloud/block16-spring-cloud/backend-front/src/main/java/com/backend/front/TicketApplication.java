@@ -8,8 +8,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 @SpringBootApplication
-@EnableFeignClients
+
 @EnableEurekaClient
+@EnableFeignClients
 public class TicketApplication {
 
 	public static void main(String[] args) {

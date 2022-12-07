@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ClientInputDto {
-    String name;
-    String surname;
-    Integer age;
-    String email;
-    String phone_number;
+   private String name;
+   private String surname;
+   private String age;
+   private  String email;
+   private  String phone_number;
 }

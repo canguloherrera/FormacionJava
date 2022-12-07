@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class TicketOutputDto {
     Long id;
-    Long passengerId;
+    //Long passengerId;
     String passengerName;
     String passengerLastName;
     String passengerEmail;
@@ -26,7 +26,7 @@ public class TicketOutputDto {
 
 public TicketOutputDto(Ticket ticket){
         this.id = ticket.getId();
-        this.passengerId = ticket.getId();
+     //   this.passengerId = ticket.getId();
         this.passengerName= ticket.getPassengerName();
         this.passengerLastName = ticket.getPassengerLastName();
         this.passengerEmail = ticket.getPassengerEmail();

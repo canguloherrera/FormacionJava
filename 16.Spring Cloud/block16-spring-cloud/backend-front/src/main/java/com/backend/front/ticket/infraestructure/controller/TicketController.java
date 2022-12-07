@@ -3,6 +3,7 @@ package com.backend.front.ticket.infraestructure.controller;
 import com.backend.front.ticket.application.TicketService;
 import com.backend.front.ticket.infraestructure.dto.TicketOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,15 @@ public class TicketController {
     public List<TicketOutputDto> listTicket(){
         return ticketService.getAllTicket();
 
+    }
+
+    @GetMapping("/ticket/{id}")
+    public ResponseEntity<Object> getTicketById(@PathVariable("id") Long id){
+        Object  ticket = ticketService.findTicketById(id);
+        if(ticket == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ticket);
     }
 
 }

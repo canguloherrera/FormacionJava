@@ -2,10 +2,13 @@ package com.backend.front.ticket.domain;
 
 import com.backend.front.client.domain.Client;
 import com.backend.front.trip.domain.Trip;
+import com.backend.front.trip.infraestructure.dto.TripOutputDto;
 import lombok.*;
 
 import javax.persistence.*;
+
 import java.util.Date;
+
 
 @Setter
 @Getter
@@ -28,6 +31,9 @@ public class Ticket {
     private Date departureDate;
     private Date arrivalDate;
 
+
+
+
     public Ticket(Client client, Trip trip){
         this.passengerId = client.getIdClient();
         this.passengerName = client.getName();
@@ -37,6 +43,7 @@ public class Ticket {
         this.tripDestination = trip.getDestination();
         this.departureDate = trip.getDepartureDate();
         this.arrivalDate = trip.getArrivalDate();
+
 
     }
 

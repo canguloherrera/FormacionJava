@@ -1,7 +1,7 @@
 package com.backend.front.ticket.application;
 
 import com.backend.front.client.infraestructure.dto.ClientOutputDto;
-import com.backend.front.ticket.infraestructure.dto.TicketOutputDto;
+import com.backend.front.ticket.infraestructure.dto.*;
 
 import java.util.List;
 

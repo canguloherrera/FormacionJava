@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/16.Spring Cloud.iml" filepath="$PROJECT_DIR$/.idea/16.Spring Cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/eureka-naming-server/API_Discovery.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/eureka-naming-server/API_Discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/apigateway/apigateway.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/apigateway/apigateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/Backend-back/backend-back.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/Backend-back/backend-back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/backend/backend.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/backend-front/backendfront.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/backend-front/backendfront.iml" />
-      <module fileurl="file://$PROJECT_DIR$/block16-spring-cloud/eureka-naming-server/eureka-server.iml" filepath="$PROJECT_DIR$/block16-spring-cloud/eureka-naming-server/eureka-server.iml" />
     </modules>
   </component>
 </project>

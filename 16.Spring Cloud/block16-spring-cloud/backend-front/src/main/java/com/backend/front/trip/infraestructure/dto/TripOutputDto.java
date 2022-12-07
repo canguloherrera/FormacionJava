@@ -1,12 +1,14 @@
 package com.backend.front.trip.infraestructure.dto;
 
-import com.backend.front.ticket.domain.Ticket;
 import com.backend.front.client.infraestructure.dto.ClientOutputDto;
 
+
+import com.backend.front.trip.domain.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,23 +16,34 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TripOutputDto {
-    Long id;
-    String origin;
-    String destination;
-    Date departureDate;
-    Date arrivalDate;
+    private Long id;
+    private String origin;
+    private String destination;
+    private Date departureDate;
+    private Date arrivalDate;
 
-    String status;
+    private String status;
 
-    List<ClientOutputDto> passengers;
+    //private String passenger;
 
-    public TripOutputDto(Ticket ticket){
-        this.id = ticket.getId();
-        this.origin = ticket.getTripOrigin();
-        this.destination = ticket.getTripDestination();
-        this.departureDate = ticket.getDepartureDate();
-        this.arrivalDate = ticket.getArrivalDate();
+    private List<ClientOutputDto> listPassengers = new ArrayList<>();
+
+    public TripOutputDto(Trip trip){
+        this.id = trip.getId();
+       // this.passenger = trip.getPassenger();
+        this.origin = trip.getOrigin();
+        this.arrivalDate = trip.getArrivalDate();
+        this.departureDate = trip.getDepartureDate();
+        this.listPassengers = trip.getPassengers().stream().map(ClientOutputDto::new).toList();
+        this.status = trip.getStatus();
+        this.destination = trip.getDestination();
+
 
 
     }
-}
+
+
+
+
+    }
+
