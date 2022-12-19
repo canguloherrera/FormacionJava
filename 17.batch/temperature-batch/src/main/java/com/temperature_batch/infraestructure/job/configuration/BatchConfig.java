@@ -1,7 +1,10 @@
 package com.temperature_batch.infraestructure.job.configuration;
 
 import com.temperature_batch.domain.Weather;
+import com.temperature_batch.infraestructure.job.joblistener.JobExecutionListener;
 import com.temperature_batch.infraestructure.job.step1.item.ConsoleItemWriter;
+import com.temperature_batch.infraestructure.job.step1.listener.WeatherItemReaderListener;
+import com.temperature_batch.infraestructure.job.step1.listener.WeatherItemWriterListener;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -34,22 +37,36 @@ public class BatchConfig {
     @Value("classpath*:/data/inputData*.csv")
     private Resource[] inputResources;
 
-    private Resource outPutResource = new FileSystemResource("output/outputData.csv");
+    private final Resource outPutResource = new FileSystemResource("output/outputData.csv");
+
 
     @Bean
-    public Job temperatureRegisterJob(){
+    public WeatherItemReaderListener readerListener(){
+        return new WeatherItemReaderListener();
+    }
+    @Bean
+    public WeatherItemWriterListener writerListener(){
+        return new WeatherItemWriterListener();
+    }
+
+    @Bean
+    public Job temperatureRegisterJob(Step step1, JobExecutionListener jobExecutionListener){
         return jobBuilderFactory
                 .get("temperatureRegisterJob")
                 .incrementer(new RunIdIncrementer())
-                .start(step1())
+                .listener(jobExecutionListener)
+                .start(step1)
                 .build();
 
     }
 
     @Bean
-    public Step step1(){
+    public Step step1(WeatherItemReaderListener readerListener,
+                      WeatherItemWriterListener writerListener){
         return stepBuilderFactory.get("step1")
                 .<Weather, Weather>chunk(5)
+                .listener(readerListener)
+                .listener(writerListener)
                 .faultTolerant()
                 .noSkip(IllegalArgumentException.class)
                 .reader(multiResourceItemReader())

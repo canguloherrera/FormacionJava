@@ -5,9 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.ItemReadListener;
 
-public class ItemReaderListener  implements ItemReadListener<Weather> {
+public class WeatherItemReaderListener implements ItemReadListener<Weather> {
 
-    private static final Logger LOGGER= LoggerFactory.getLogger(ItemReaderListener.class);
+    private static final Logger LOGGER= LoggerFactory.getLogger(WeatherItemReaderListener.class);
     @Override
     public void beforeRead() {
 
