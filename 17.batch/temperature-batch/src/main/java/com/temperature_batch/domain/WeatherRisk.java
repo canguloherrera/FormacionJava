@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
+
 @Data
 @Entity
-@Table(name = "TemperatureRisk")
+@Table(name = "WeatherRisk")
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeatherRisk {
@@ -20,10 +22,19 @@ public class WeatherRisk {
     private Integer numberMeasurements;
     private Integer year;
     private double AverageTemperature;
-    private int risk;
+    private String risk;
+    private Date date;
 
-    @OneToOne
-    private Weather weather;
+   @OneToOne
+   @JoinColumn(name = "id")
+   private Weather weather;
+
+
+
+    public WeatherRisk (Weather weather,String risk){
+        this.weather = weather;
+        this.risk = risk;
+    }
 
 
 }
