@@ -4,7 +4,7 @@ import com.temperature_batch.domain.WeatherRisk;
 import com.temperature_batch.infraestructure.dto.WeatherRiskDto;
 import org.springframework.batch.item.ItemProcessor;
 
-public class WeatherRiskItemProcesor implements ItemProcessor<WeatherRiskDto, WeatherRisk> {
+public class WeatherRiskItemProcessorStep3 implements ItemProcessor<WeatherRiskDto, WeatherRisk> {
     @Override
     public WeatherRisk process(WeatherRiskDto weatherRiskDto) throws Exception {
         WeatherRisk weatherRisk = new WeatherRisk();

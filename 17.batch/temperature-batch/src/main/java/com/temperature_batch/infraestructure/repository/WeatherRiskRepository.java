@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface WeatherRiskRepository extends JpaRepository<WeatherRisk,Long> {
  @Query(value = "SELECT t.location,YEAR(t.date) as y,MONTH(t.date) as m,COUNT(t.temperature) as c,AVG(t.temperature) as average FROM weather AS t GROUP BY t.location,YEAR(t.date),MONTH(t.date) ORDER BY t.location",nativeQuery = true)
- List<WeatherRisk> findListWeatherRisk();
+ List<WeatherRiskDto> findListWeatherRisk();
 }

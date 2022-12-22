@@ -4,7 +4,7 @@ import com.temperature_batch.domain.Weather;
 import com.temperature_batch.infraestructure.dto.WeatherDto;
 import org.springframework.batch.item.ItemProcessor;
 
-public class WeatherProcessor implements ItemProcessor<Weather, WeatherDto> {
+public class WeatherItemProcessorStep2 implements ItemProcessor<Weather, WeatherDto> {
     @Override
     public WeatherDto process(Weather weather) throws Exception {
        if(weather.getTemperature()>50 || weather.getTemperature()<-20){

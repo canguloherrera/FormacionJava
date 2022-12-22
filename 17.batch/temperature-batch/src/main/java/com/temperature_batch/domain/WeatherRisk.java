@@ -21,15 +21,13 @@ public class WeatherRisk {
     private Integer month;
     private Integer numberMeasurements;
     private Integer year;
-    private double AverageTemperature;
+    private Float AverageTemperature;
     private String risk;
-    private Date date;
+
 
    @OneToOne
    @JoinColumn(name = "id")
    private Weather weather;
-
-
 
     public WeatherRisk (Weather weather,String risk){
         this.weather = weather;

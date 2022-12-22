@@ -20,8 +20,7 @@ public class WeatherRiskDto implements Serializable {
     private  Integer month;
     private  Integer numberMeasurements;
     private  Integer year;
-    private  double AverageTemperature;
+    private  Float AverageTemperature;
     private  String risk;
-    private  Date date;
     private  WeatherDto weather;
 }

@@ -1,7 +1,6 @@
 package com.temperature_batch.infraestructure.job.step1.item;
 
 import com.temperature_batch.domain.Weather;
-import com.temperature_batch.domain.WeatherRisk;
 import com.temperature_batch.infraestructure.repository.WeatherRepository;
 import com.temperature_batch.infraestructure.repository.WeatherRiskRepository;
 import org.springframework.batch.item.ItemWriter;
@@ -9,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class WheatherItemWriter implements ItemWriter<Weather> {
+public class WheatherItemWriterStep1 implements ItemWriter<Weather> {
     @Autowired
     WeatherRepository repository;
 
