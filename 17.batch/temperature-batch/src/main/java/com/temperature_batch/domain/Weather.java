@@ -24,10 +24,6 @@ public class Weather {
     private Integer temperature;
 
 
-
-
-
-
     }
 
 

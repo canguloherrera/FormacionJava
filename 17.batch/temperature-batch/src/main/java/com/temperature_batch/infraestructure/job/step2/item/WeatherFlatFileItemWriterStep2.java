@@ -9,10 +9,10 @@ import org.springframework.core.io.Resource;
 
 public class WeatherFlatFileItemWriterStep2 extends FlatFileItemWriter<WeatherDto> {
 
-    private final Resource outPutResource = new FileSystemResource("output/outputData1.csv");
+    private final Resource outPutResource = new FileSystemResource("output/REGISTROS_ERRONEO.csv");
 
     public WeatherFlatFileItemWriterStep2(){
-        Resource outPutResource= new FileSystemResource("output/outputData1.csv");
+        Resource outPutResource= new FileSystemResource("output/REGISTROS_ERRONEO.csv");
         setResource(outPutResource);
         setAppendAllowed(true);
         setLineAggregator(new DelimitedLineAggregator<WeatherDto>(){
